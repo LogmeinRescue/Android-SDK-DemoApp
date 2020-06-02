@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.logmein.rescuesdk.api.ext.AppScreenControlExtension;
 import com.logmein.rescuesdk.api.ext.AppScreenStreamingExtension;
 import com.logmein.rescuesdk.api.ext.DeviceInfoExtension;
 import com.logmein.rescuesdk.api.session.Session;
@@ -142,6 +143,8 @@ public class MainActivity extends AppCompatActivity {
         cleanup();
 
         SessionFactory sessionFactory = SessionFactory.newInstance();
+        // Replace AppScreenStreamingExtension.class -> AppScreenControlExtension.class
+        // to have in app remote control
         sessionFactory.useExtension(AppScreenStreamingExtension.class);
         sessionFactory.useExtension(DeviceInfoExtension.class);
         sessionFactory.create(getApplicationContext(), apiKey, new SessionFactory.SessionCreationCallback() {
